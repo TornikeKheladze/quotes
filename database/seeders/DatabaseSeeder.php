@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // Post::factory()->create();
-		// $user = User::factory()->create([
-		// 	'name'=> 'tornike xeladze',
-		// ]);
+        // $user = User::factory()->create([
+        // 	'name'=> 'tornike xeladze',
+        // ]);
         Movie::factory(5)->create();
 
         Quote::factory(3)->create([
@@ -44,8 +44,5 @@ class DatabaseSeeder extends Seeder
         Quote::factory(3)->create([
             'movie_id'=>'5',
         ]);
-
-        
-        
     }
 }

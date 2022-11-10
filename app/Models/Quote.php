@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Quote extends Model
 {
     use HasFactory;
-    
+
     public function movie()
-	{
-		return $this->belongsTo(Movie::class, 'movie_id');
-	}
+    {
+        return $this->belongsTo(Movie::class, 'movie_id');
+    }
 }

@@ -10,20 +10,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class QuoteFactory extends Factory
 {
-	/**
-	 * Define the model's default state.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function definition()
-	{
-		return [
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
             'movie_id'    => Movie::factory(),
-           
-			'quote'       => $this->faker->slug(),
-			// 'post_id'=> Post::factory(),
-			// 'user_id'=> User::factory(),
-			// 'body'   => $this->faker->paragraph(),
-		];
-	}
+            'quote'       => $this->faker->slug(),
+        ];
+    }
 }
