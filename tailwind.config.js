@@ -6,7 +6,19 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      colors:{
+        gray:{
+          888:'#4E4E4E',
+          889:'#3D3B3B'
+        }
+      }
+
+
+    },
   },
   plugins: [],
 }
