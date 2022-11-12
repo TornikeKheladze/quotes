@@ -12,6 +12,7 @@ class Quote extends Model
 	protected $fillable = [
 		'quote',
 		'movie_id',
+		'thumbnail',
 	];
 
 	public function movie()
