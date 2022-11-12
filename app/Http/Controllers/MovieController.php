@@ -15,11 +15,6 @@ class MovieController extends Controller
 		]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function adminPanel()
 	{
 		if (auth()->user()?->name !== 'tornike')
@@ -29,7 +24,16 @@ class MovieController extends Controller
 		return view('admin');
 	}
 
-	public function create()
+	public function createQuote()
+	{
+		if (auth()->user()?->name !== 'tornike')
+		{
+			abort(403);
+		}
+		return view('quote.create');
+	}
+
+	public function createMovie()
 	{
 		if (auth()->user()?->name !== 'tornike')
 		{
@@ -41,14 +45,23 @@ class MovieController extends Controller
 	public function storeQuote()
 	{
 		$attributes = request()->validate([
-			// 'thumbnail'     => 'required|image',
 			'quote'       => 'required',
 			'movie_id'    => 'required',
 		]);
-		// $attributes['user_id'] = auth()->id();
-		// $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
 		Quote::create($attributes);
+
+		return redirect('/');
+	}
+
+	public function storeMovie()
+	{
+		$attributes = request()->validate([
+			'name'       => 'required',
+			'slug'       => 'required',
+		]);
+
+		Movie::create($attributes);
 
 		return redirect('/');
 	}

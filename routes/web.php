@@ -8,9 +8,13 @@ Route::get('/', [MovieController::class, 'index']);
 
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show']);
 
-Route::get('/admin/movie/create', [MovieController::class, 'create']);
+Route::get('/admin/quote/create', [MovieController::class, 'createQuote']);
 
-Route::post('admin/movie', [MovieController::class, 'storeQuote'])->middleware('auth');
+Route::get('/admin/movie/create', [MovieController::class, 'createMovie']);
+
+Route::post('admin/quote', [MovieController::class, 'storeQuote'])->middleware('auth');
+
+Route::post('admin/movie', [MovieController::class, 'storeMovie'])->middleware('auth');
 
 Route::get('admin', [MovieController::class, 'adminPanel'])->middleware('auth');
 
