@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quote extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    public function movie()
-    {
-        return $this->belongsTo(Movie::class, 'movie_id');
-    }
+	protected $fillable = [
+		'quote',
+		'movie_id',
+	];
+
+	public function movie()
+	{
+		return $this->belongsTo(Movie::class, 'movie_id');
+	}
 }

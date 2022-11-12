@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
@@ -48,7 +51,6 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-
         "format-all": [
             "./vendor/bin/php-cs-fixer fix ./ --using-cache=no"
         ]

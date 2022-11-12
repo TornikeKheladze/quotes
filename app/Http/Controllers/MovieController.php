@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Quote;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function index()
 	{
 		return view('movies', [
@@ -19,33 +15,57 @@ class MovieController extends Controller
 		]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
+	public function adminPanel()
 	{
+		if (auth()->user()?->name !== 'tornike')
+		{
+			abort(403);
+		}
+		return view('admin');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
+	public function createQuote()
 	{
+		if (auth()->user()?->name !== 'tornike')
+		{
+			abort(403);
+		}
+		return view('quote.create');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param \App\Models\Movie $movie
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+	public function createMovie()
+	{
+		if (auth()->user()?->name !== 'tornike')
+		{
+			abort(403);
+		}
+		return view('movie.create');
+	}
+
+	public function storeQuote()
+	{
+		$attributes = request()->validate([
+			'quote'       => 'required',
+			'movie_id'    => 'required',
+		]);
+
+		Quote::create($attributes);
+
+		return redirect('/');
+	}
+
+	public function storeMovie()
+	{
+		$attributes = request()->validate([
+			'name'       => 'required',
+			'slug'       => 'required',
+		]);
+
+		Movie::create($attributes);
+
+		return redirect('/');
+	}
+
 	public function show(Movie $movie)
 	{
 		return view('movie', [
@@ -53,36 +73,14 @@ class MovieController extends Controller
 		]);
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param \App\Models\Movie $movie
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function edit(Movie $movie)
 	{
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \App\Models\Movie        $movie
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function update(Request $request, Movie $movie)
 	{
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param \App\Models\Movie $movie
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function destroy(Movie $movie)
 	{
 	}
