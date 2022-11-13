@@ -42,7 +42,7 @@ class MovieController extends Controller
 
 		Movie::create($attributes);
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 
 	public function show(Movie $movie)
@@ -68,14 +68,14 @@ class MovieController extends Controller
 
 		$movie->update($attributes);
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 
 	public function destroy(Movie $movie)
 	{
 		$movie->delete();
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 
 	public function edit(Movie $movie)

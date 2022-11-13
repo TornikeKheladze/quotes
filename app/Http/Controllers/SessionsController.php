@@ -9,7 +9,7 @@ class SessionsController extends Controller
 	public function destroy()
 	{
 		auth()->logout();
-		return redirect('/')->with('success', 'goodbye');
+		return redirect()->route('home');
 	}
 
 	public function create()
@@ -29,6 +29,6 @@ class SessionsController extends Controller
 		}
 
 		session()->regenerate();
-		return redirect('/')->with('success', 'welcome back!');
+		return redirect()->route('home');
 	}
 }

@@ -22,7 +22,7 @@ class QuoteController extends Controller
 
 		Quote::create($attributes);
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 
 	public function create()
@@ -54,13 +54,13 @@ class QuoteController extends Controller
 		]);
 		$quote->update($attributes);
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 
 	public function destroy(Quote $quote)
 	{
 		$quote->delete();
 
-		return redirect('/admin');
+		return redirect()->route('admin');
 	}
 }
