@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MovieController::class, 'index'])->name('home');
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show']);
-// Route::get('/admin/movie/create', [MovieController::class, 'create'])->middleware('auth');
-// Route::get('/admin/movie/{movie:slug}', [MovieController::class, 'quoteList'])->middleware('auth');
-// Route::post('admin/movie', [MovieController::class, 'store'])->middleware('auth');
-// Route::get('admin', [MovieController::class, 'adminPanel'])->middleware('auth');
-// Route::get('/admin/movie/{movie}/edit', [MovieController::class, 'edit'])->middleware('auth');
-// Route::patch('/admin/movie/{movie}', [MovieController::class, 'update'])->middleware('auth');
-// Route::delete('/admin/movie/{movie}', [MovieController::class, 'destroy'])->middleware('auth');
 
 Route::prefix('admin')->group(function () {
 	Route::get('//movie/create', [MovieController::class, 'create'])->middleware('auth');
