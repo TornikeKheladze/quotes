@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Sansation';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Sansation'), url('https://fonts.cdnfonts.com/s/382/Sansation_Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Sansation';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Sansation'), url('https://fonts.cdnfonts.com/s/382/Sansation_Light.woff') format('woff');
+}
+@font-face {
+    font-family: 'Sansation';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Sansation'), url('https://fonts.cdnfonts.com/s/382/Sansation_Bold.woff') format('woff');
+}
+
+body{
+    font-family: 'Sansation';
+}

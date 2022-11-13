@@ -5,13 +5,11 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
-///
-
 Route::get('/', [MovieController::class, 'index'])->name('home');
 Route::get('/movie/{movie:slug}', [MovieController::class, 'show']);
 
 Route::prefix('admin')->group(function () {
-	Route::get('//movie/create', [MovieController::class, 'create'])->middleware('auth');
+	Route::get('/movie/create', [MovieController::class, 'create'])->middleware('auth');
 	Route::get('/movie/{movie:slug}', [MovieController::class, 'quoteList'])->middleware('auth');
 	Route::post('/movie', [MovieController::class, 'store'])->middleware('auth');
 	Route::get('/', [MovieController::class, 'adminPanel'])->middleware('auth')->name('admin');

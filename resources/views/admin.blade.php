@@ -1,11 +1,10 @@
 <x-layout>
 
     <h1 class="text-3xl text-white mb-4">
-        you are admin you can:
+        Admin
     </h1>
     <a href="admin/quote/create" class="text-2xl text-white underline mb-6">Add new quote to movie</a>
-    <a href="admin/movie/create" class="text-2xl text-white underline mb-6">Add new movie </a>
-
+ 
     <div class="flex flex-col items-center gap-3 w-full">
         @foreach ($movies as $movie)
             <div class="bg-white rounded-xl h-10 flex items-center justify-between w-1/2">
@@ -24,6 +23,9 @@
                 </div>
             </div>
         @endforeach
+
+        <a href="admin/movie/create" class="bg-gray-300 w-1/4 rounded-xl text-center">Add new movie</a>
+
     </div>
 
 </x-layout>
