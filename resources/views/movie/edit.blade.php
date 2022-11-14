@@ -2,7 +2,7 @@
     <section class="px-6 py-8">
         <h1 class="text-xl font-bold mb-4 text-center">Edit Movie</h1>
 
-        <form method='POST' action='/admin/movie/{{ $movie->id }}' enctype="multipart/form-data"
+        <form method='POST' action='{{route('admin')}}/movie/{{ $movie->id }}' enctype="multipart/form-data"
             class='mt-10 flex items-center flex-col'>
             @csrf
             @method('patch')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\Quote;
 
 class QuoteController extends Controller
@@ -41,7 +42,8 @@ class QuoteController extends Controller
 	public function edit(Quote $quote)
 	{
 		return view('quote.edit', [
-			'quote'=> $quote,
+			'quote' => $quote,
+			'movies'=> Movie::all(),
 		]);
 	}
 

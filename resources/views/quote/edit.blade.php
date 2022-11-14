@@ -2,7 +2,7 @@
     <section class="px-6 py-8">
         <h1 class="text-xl font-bold mb-4 text-center">Edit Quote</h1>
 
-        <form method='POST' action='/admin/quote/{{ $quote->id }}' enctype="multipart/form-data"
+        <form method='POST' action='{{route('admin')}}/quote/{{ $quote->id }}' enctype="multipart/form-data"
             class='mt-10 flex items-center flex-col'>
             @csrf
             @method('patch')
@@ -12,7 +12,7 @@
                     Movies
                 </label>
                 <select name="movie_id" id="movie_id">
-                    @foreach (App\Models\Movie::all() as $movie)
+                    @foreach ($movies as $movie)
                         <option value={{ $movie->id }} {{ $quote->movie_id == $movie->id ? 'selected' : '' }}>
                             {{ $movie->name }}</option>
                     @endforeach

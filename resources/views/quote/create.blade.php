@@ -2,7 +2,7 @@
     <section class="px-6 py-8">
         <h1 class="text-xl font-bold mb-4 text-center">Add new movie quote</h1>
 
-        <form method='POST' action='/admin/quote' enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
+        <form method='POST' action='{{route('admin')}}/quote' enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
             @csrf
 
             <div class="mb-6 w-full">
