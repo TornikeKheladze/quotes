@@ -2,84 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\Quote;
-use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+	public function index()
+	{
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	public function store()
+	{
+		$attributes = request()->validate([
+			'quote'       => 'required',
+			'movie_id'    => 'required',
+			'thumbnail'   => 'required|image',
+		]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Quote  $quote
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Quote $quote)
-    {
-        //
-    }
+		Quote::create($attributes);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Quote  $quote
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Quote $quote)
-    {
-        //
-    }
+		return redirect()->route('admin');
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Quote  $quote
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Quote $quote)
-    {
-        //
-    }
+	public function create()
+	{
+		if (auth()->user()?->name !== 'tornike')
+		{
+			abort(403);
+		}
+		return view('quote.create');
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Quote  $quote
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Quote $quote)
-    {
-        //
-    }
+	public function show(Quote $quote)
+	{
+	}
+
+	public function edit(Quote $quote)
+	{
+		return view('quote.edit', [
+			'quote' => $quote,
+			'movies'=> Movie::all(),
+		]);
+	}
+
+	public function update(Quote $quote)
+	{
+		$attributes = request()->validate([
+			'quote'       => 'required',
+			'movie_id'    => 'required',
+			'thumbnail'   => 'image',
+		]);
+		$quote->update($attributes);
+
+		return redirect()->route('admin');
+	}
+
+	public function destroy(Quote $quote)
+	{
+		$quote->delete();
+
+		return redirect()->route('admin');
+	}
 }

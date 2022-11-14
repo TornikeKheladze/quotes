@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\Quote;
-use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
@@ -21,19 +19,12 @@ class MovieController extends Controller
 		{
 			abort(403);
 		}
-		return view('admin');
+		return view('admin', [
+			'movies'=> Movie::all(),
+		]);
 	}
 
-	public function createQuote()
-	{
-		if (auth()->user()?->name !== 'tornike')
-		{
-			abort(403);
-		}
-		return view('quote.create');
-	}
-
-	public function createMovie()
+	public function create()
 	{
 		if (auth()->user()?->name !== 'tornike')
 		{
@@ -42,19 +33,7 @@ class MovieController extends Controller
 		return view('movie.create');
 	}
 
-	public function storeQuote()
-	{
-		$attributes = request()->validate([
-			'quote'       => 'required',
-			'movie_id'    => 'required',
-		]);
-
-		Quote::create($attributes);
-
-		return redirect('/');
-	}
-
-	public function storeMovie()
+	public function store()
 	{
 		$attributes = request()->validate([
 			'name'       => 'required',
@@ -63,7 +42,7 @@ class MovieController extends Controller
 
 		Movie::create($attributes);
 
-		return redirect('/');
+		return redirect()->route('admin');
 	}
 
 	public function show(Movie $movie)
@@ -73,15 +52,36 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function edit(Movie $movie)
+	public function quoteList(Movie $movie)
 	{
+		return view('quote.list', [
+			'movie'=> $movie,
+		]);
 	}
 
-	public function update(Request $request, Movie $movie)
+	public function update(Movie $movie)
 	{
+		$attributes = request()->validate([
+			'name'       => 'required',
+			'slug'       => 'required',
+		]);
+
+		$movie->update($attributes);
+
+		return redirect()->route('admin');
 	}
 
 	public function destroy(Movie $movie)
 	{
+		$movie->delete();
+
+		return redirect()->route('admin');
+	}
+
+	public function edit(Movie $movie)
+	{
+		return view('movie.edit', [
+			'movie'=> $movie,
+		]);
 	}
 }
