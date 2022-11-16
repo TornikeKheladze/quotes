@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
@@ -9,11 +10,12 @@ class SessionsController extends Controller
 	public function destroy()
 	{
 		auth()->logout();
-		return redirect()->route('home');
+		return redirect()->route('home', ['lang'=>app()->getLocale()]);
 	}
 
-	public function create()
+	public function create($lang)
 	{
+		App::setLocale($lang);
 		return view('sessions.create');
 	}
 
@@ -29,6 +31,6 @@ class SessionsController extends Controller
 		}
 
 		session()->regenerate();
-		return redirect()->route('home');
+		return redirect()->route('home', ['lang'=>app()->getLocale()]);
 	}
 }

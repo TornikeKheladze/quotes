@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditQuote;
+use App\Http\Requests\StoreQuote;
 use App\Models\Movie;
 use App\Models\Quote;
+use Illuminate\Support\Facades\App;
 
 class QuoteController extends Controller
 {
@@ -11,58 +14,68 @@ class QuoteController extends Controller
 	{
 	}
 
-	public function store()
+	public function store(StoreQuote $request)
 	{
-		$attributes = request()->validate([
-			'quote'       => 'required',
-			'movie_id'    => 'required',
-			'thumbnail'   => 'required|image',
-		]);
+		$attributes = $request->validated();
 
-		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		$quote = new Quote();
+		$quote
+		   ->setTranslation('quote', 'en', $attributes['quote_en'])
+		   ->setTranslation('quote', 'ka', $attributes['quote_ka'])
+		   ->setAttribute('movie_id', $attributes['movie_id'])
+		   ->setAttribute('thumbnail', request()->file('thumbnail')->store('thumbnails'))
+		   ->save();
 
-		Quote::create($attributes);
-
-		return redirect()->route('admin');
+		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 
-	public function create()
+	public function create($lang)
 	{
+		App::setLocale($lang);
 		if (auth()->user()?->name !== 'tornike')
 		{
 			abort(403);
 		}
-		return view('quote.create');
+		return view('quote.create', [
+			'movies'=> Movie::all(),
+		]);
 	}
 
 	public function show(Quote $quote)
 	{
 	}
 
-	public function edit(Quote $quote)
+	public function edit(Quote $quote, $lang)
 	{
+		App::setLocale($lang);
 		return view('quote.edit', [
 			'quote' => $quote,
 			'movies'=> Movie::all(),
 		]);
 	}
 
-	public function update(Quote $quote)
+	public function update(Quote $quote, EditQuote $request)
 	{
-		$attributes = request()->validate([
-			'quote'       => 'required',
-			'movie_id'    => 'required',
-			'thumbnail'   => 'image',
-		]);
-		$quote->update($attributes);
+		$attributes = $request->validated();
+		$translations = ['en' => $attributes['quote_en'], 'ka' => $attributes['quote_ka']];
+		$withTranslations = [
+			'quote'    => $translations,
+			'movie_id' => $attributes['movie_id'],
+		];
 
-		return redirect()->route('admin');
+		if (request()->file('thumbnail'))
+		{
+			$withTranslations['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		}
+		$quote->update($withTranslations);
+
+		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 
 	public function destroy(Quote $quote)
 	{
 		$quote->delete();
 
-		return redirect()->route('admin');
+		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 }

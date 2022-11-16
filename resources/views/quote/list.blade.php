@@ -11,17 +11,19 @@
                     {{ $quote->quote }}
                 </span>
                 <div class="mr-4 flex items-start">
-                    <a class="text-gray-600 mr-4" href="quote/{{ $quote->id }}/edit">Edit</a>
+                    <a class="text-gray-600 mr-4"
+                        href="{{ route('quote_edit', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
 
-                    <form method='POST' class="pt-0" action='{{route('admin')}}/quote/{{ $quote->id }}'
+                    <form method='POST' class="pt-0" action='{{ route('delete_quote', ['quote' => $quote->id]) }}'
                         enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                         @csrf
                         @method('delete')
-                        <button type="submit" class="text-red-600 self-start">Delete</button>
+                        <button type="submit" class="text-red-600 self-start">{{ __('admin.delete') }}</button>
                     </form>
                 </div>
             </div>
         @endforeach
-        <a href="{{route('admin')}}/quote/create" class="bg-gray-300 w-1/4 rounded-xl text-center">Add new quote</a>
+        <a href="{{ route('quote_create', ['lang' => app()->getLocale()]) }}"
+            class="bg-gray-300 pl-6 pr-6 rounded-xl self-center text-center">{{ __('admin.quote') }}</a>
     </div>
 </x-layout>
