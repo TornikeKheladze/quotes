@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMovie;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class MovieController extends Controller
 {
@@ -42,19 +44,17 @@ class MovieController extends Controller
 		return view('movie.create');
 	}
 
-	public function store()
+	public function store(StoreMovie $request)
 	{
-		$attributes = request()->validate([
-			'name_ka'       => 'required',
-			'name_en'       => 'required',
-			'slug'          => 'required',
-		]);
+		$attributes = $request->validated();
+
+		$slug = Str::replace(' ', '-', $attributes['name_en']);
 
 		$movie = new Movie();
 		$movie
 		   ->setTranslation('name', 'en', $attributes['name_en'])
 		   ->setTranslation('name', 'ka', $attributes['name_ka'])
-		   ->setAttribute('slug', $attributes['slug'])
+		   ->setAttribute('slug', $slug)
 		   ->save();
 
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
@@ -76,17 +76,16 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function update(Movie $movie)
+	public function update(Movie $movie, StoreMovie $request)
 	{
-		$attributes = request()->validate([
-			'name_ka'       => 'required',
-			'name_en'       => 'required',
-			'slug'          => 'required',
-		]);
+		$attributes = $request->validated();
+
+		$slug = Str::replace(' ', '-', $attributes['name_en']);
+
 		$translations = ['en' => $attributes['name_en'], 'ka' => $attributes['name_ka']];
 		$withTranslations = [
 			'name'=> $translations,
-			'slug'=> $attributes['slug'],
+			'slug'=> $slug,
 		];
 		$movie->update($withTranslations);
 

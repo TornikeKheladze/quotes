@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditQuote;
+use App\Http\Requests\StoreQuote;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Support\Facades\App;
@@ -12,14 +14,9 @@ class QuoteController extends Controller
 	{
 	}
 
-	public function store()
+	public function store(StoreQuote $request)
 	{
-		$attributes = request()->validate([
-			'quote_en'       => 'required',
-			'quote_ka'       => 'required',
-			'movie_id'       => 'required',
-			'thumbnail'      => 'required|image',
-		]);
+		$attributes = $request->validated();
 
 		$quote = new Quote();
 		$quote
@@ -57,14 +54,9 @@ class QuoteController extends Controller
 		]);
 	}
 
-	public function update(Quote $quote)
+	public function update(Quote $quote, EditQuote $request)
 	{
-		$attributes = request()->validate([
-			'quote_en'       => 'required',
-			'quote_ka'       => 'required',
-			'movie_id'       => 'required',
-			'thumbnail'      => 'image',
-		]);
+		$attributes = $request->validated();
 		$translations = ['en' => $attributes['quote_en'], 'ka' => $attributes['quote_ka']];
 		$withTranslations = [
 			'quote'    => $translations,
