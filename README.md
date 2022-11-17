@@ -91,14 +91,6 @@ And now you should provide **.env** file all the necessary environment variables
 
 #
 
-after setting up **.env** file, execute:
-
-```sh
-php artisan config:cache
-```
-
-in order to cache environment variables.
-
 5\. Now execute in the root of you project following:
 
 ```sh
@@ -158,7 +150,7 @@ if you wish to see changes after changing styles with Tailwind CSS, execute:
 - package.json
 ```
 
-Project structure is fairly straitforward(at least for laravel developers)...
+Project structure is fairly straight forward (at least for laravel developers)...
 
 For more information about project standards, take a look at these docs:
 
