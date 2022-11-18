@@ -23,7 +23,7 @@ class MovieController extends Controller
 	public function adminPanel($lang)
 	{
 		App::setLocale($lang);
-		if (auth()->user()?->name !== 'tornike')
+		if (!auth()->user())
 		{
 			abort(403);
 		}
@@ -36,7 +36,7 @@ class MovieController extends Controller
 	public function create($lang)
 	{
 		App::setLocale($lang);
-		if (auth()->user()?->name !== 'tornike')
+		if (!auth()->user())
 		{
 			abort(403);
 		}

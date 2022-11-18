@@ -32,7 +32,8 @@ class QuoteController extends Controller
 	public function create($lang)
 	{
 		App::setLocale($lang);
-		if (auth()->user()?->name !== 'tornike')
+
+		if (!auth()->user())
 		{
 			abort(403);
 		}
