@@ -33,10 +33,6 @@ class QuoteController extends Controller
 	{
 		App::setLocale($lang);
 
-		if (!auth()->user())
-		{
-			abort(403);
-		}
 		return view('quote.create', [
 			'movies'=> Movie::all(),
 		]);
