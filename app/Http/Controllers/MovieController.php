@@ -23,10 +23,6 @@ class MovieController extends Controller
 	public function adminPanel($lang)
 	{
 		App::setLocale($lang);
-		if (auth()->user()?->name !== 'tornike')
-		{
-			abort(403);
-		}
 
 		return view('admin', [
 			'movies'=> Movie::all(),
@@ -36,10 +32,6 @@ class MovieController extends Controller
 	public function create($lang)
 	{
 		App::setLocale($lang);
-		if (auth()->user()?->name !== 'tornike')
-		{
-			abort(403);
-		}
 
 		return view('movie.create');
 	}
