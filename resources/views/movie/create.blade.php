@@ -2,7 +2,7 @@
     <section class="px-6 py-8">
         <h1 class="text-xl font-bold mb-4 text-center">{{__('admin.movie')}}</h1>
 
-        <form method='POST' action='/admin/movie' enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
+        <form method='POST' action='{{ route('store_movie', ['lang'=>app()->getLocale()]) }}' enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
             @csrf
             <div class="mb-6 w-full">
                 <label for="name_en" class="block mb-2 uppercase font-bold text-xs text-white">

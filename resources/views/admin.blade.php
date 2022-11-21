@@ -19,17 +19,19 @@
                     <a class="text-gray-600 mr-4"
                         href="{{ route('movie_edit', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
 
-                    <form method='POST' class="pt-0" action='{{route('delete_movie',['movie'=>$movie->id])}}'
+                    <form method='POST' class="pt-0"
+                        action='{{ route('delete_movie', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}'
                         enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                         @csrf
                         @method('delete')
-                        <button type="submit" class="text-red-600 self-start">{{__('admin.delete')}}</button>
+                        <button type="submit" class="text-red-600 self-start">{{ __('admin.delete') }}</button>
                     </form>
                 </div>
             </div>
         @endforeach
 
-        <a href="{{route('create_movie',['lang'=>app()->getLocale()])}}" class="bg-gray-300 w-1/4 rounded-xl text-center">{{__('admin.movie')}}</a>
+        <a href="{{ route('create_movie', ['lang' => app()->getLocale()]) }}"
+            class="bg-gray-300 w-1/4 rounded-xl text-center">{{ __('admin.movie') }}</a>
 
     </div>
 
