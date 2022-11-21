@@ -14,7 +14,7 @@
                         required value="{{ old('email') }}" />
                     @error('email')
                         <p class="text-red-500 text-xs mt-1">
-                            {{ $message }}
+                            {{ __('validation.login_error')}}
                         </p>
                     @enderror
                 </div>
@@ -28,7 +28,7 @@
                         required />
                     @error('password')
                         <p class="text-red-500 text-xs mt-1">
-                            {{ $message }}
+                            {{ __('validation.password_error') }}
                         </p>
                     @enderror
                 </div>

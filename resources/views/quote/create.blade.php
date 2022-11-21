@@ -58,7 +58,7 @@
                     value="{{ old('thumbnail') }}" />
                 @error('thumbnail')
                     <p class="text-red-500 text-xs mt-1">
-                        {{ $message }}
+                        {{ __('validation.invalid_image') }}
                     </p>
                 @enderror
 
