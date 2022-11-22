@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EditQuote;
-use App\Http\Requests\StoreQuote;
+use App\Http\Requests\EditQuoteRequest;
+use App\Http\Requests\StoreQuoteRequest;
 use App\Models\Movie;
 use App\Models\Quote;
 
 class QuoteController extends Controller
 {
-	public function store(StoreQuote $request)
+	public function store(StoreQuoteRequest $request)
 	{
 		$attributes = $request->validated();
+		$translations = ['en' => $attributes['quote_en'], 'ka' => $attributes['quote_ka']];
+		$withTranslations = [
+			'quote'    => $translations,
+			'movie_id' => $attributes['movie_id'],
+		];
+		$withTranslations['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
-		$quote = new Quote();
-		$quote
-		   ->setTranslation('quote', 'en', $attributes['quote_en'])
-		   ->setTranslation('quote', 'ka', $attributes['quote_ka'])
-		   ->setAttribute('movie_id', $attributes['movie_id'])
-		   ->setAttribute('thumbnail', request()->file('thumbnail')->store('thumbnails'))
-		   ->save();
+		Quote::create($withTranslations);
 
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
@@ -39,7 +39,7 @@ class QuoteController extends Controller
 		]);
 	}
 
-	public function update(Quote $quote, EditQuote $request)
+	public function update(Quote $quote, EditQuoteRequest $request)
 	{
 		$attributes = $request->validated();
 		$translations = ['en' => $attributes['quote_en'], 'ka' => $attributes['quote_ka']];
