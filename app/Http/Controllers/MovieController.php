@@ -54,6 +54,13 @@ class MovieController extends Controller
 		]);
 	}
 
+	public function delete(Movie $movie)
+	{
+		return view('movie.delete-movie', [
+			'movie'=> $movie,
+		]);
+	}
+
 	public function quoteList(Movie $movie)
 	{
 		return view('quote.list', [

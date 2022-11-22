@@ -19,12 +19,11 @@
                         enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                         @csrf
                         @method('delete')
-                        <button type="submit" class="text-red-600 self-start">{{ __('admin.delete') }}</button>
                     </form>
+                    <a href="{{ route('quote.show.delete', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}"
+                        class="text-red-600 self-start">{{ __('admin.delete') }}</a>
                 </div>
             </div>
         @endforeach
-        <a href="{{ route('quote.show.create', ['lang' => app()->getLocale()]) }}"
-            class="bg-gray-300 pl-6 pr-6 rounded-xl self-center text-center">{{ __('admin.quote') }}</a>
     </div>
 </x-layout>

@@ -7,6 +7,9 @@
     <a href="{{ route('quote.show.create', ['lang' => app()->getLocale()]) }}"
         class="text-2xl text-white underline mb-6">{{ __('admin.quote') }}</a>
 
+    <a href="{{ route('quote.show.all', ['lang' => app()->getLocale()]) }}"
+        class="text-xl underline mb-6 text-white">{{ __('admin.all-quotes') }}</a>
+
     <div class="flex flex-col items-center gap-3 w-full">
         @foreach ($movies as $movie)
             <div class="bg-white rounded-xl h-10 flex items-center justify-between w-1/2">
@@ -18,14 +21,9 @@
 
                     <a class="text-gray-600 mr-4"
                         href="{{ route('movie.show.edit', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
+                    <a class="text-red-600 self-start"
+                        href="{{ route('movie.show.delete', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.delete') }}</a>
 
-                    <form method='POST' class="pt-0"
-                        action='{{ route('movie.delete', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}'
-                        enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="text-red-600 self-start">{{ __('admin.delete') }}</button>
-                    </form>
                 </div>
             </div>
         @endforeach

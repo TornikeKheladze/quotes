@@ -19,9 +19,13 @@ Route::middleware('setLocale')->group(function () {
 			Route::patch('/movie/{movie}/{lang}', [MovieController::class, 'update'])->name('movie.edit');
 			Route::delete('/movie/{movie}/{lang}', [MovieController::class, 'destroy'])->name('movie.delete');
 
+			Route::get('/delete/movie/{movie}/{lang}', [MovieController::class, 'delete'])->name('movie.show.delete');
+			Route::get('/delete/quote/{quote}/{lang}', [QuoteController::class, 'delete'])->name('quote.show.delete');
+
 			Route::get('/quote/create/{lang}', [QuoteController::class, 'create'])->name('quote.show.create');
-			Route::post('/quote/{lang}', [QuoteController::class, 'store'])->name('quote.store');
 			Route::get('/movie/quote/{quote}/edit/{lang}', [QuoteController::class, 'edit'])->name('quote.show.edit');
+			Route::get('/quote/all/{lang}', [QuoteController::class, 'listAll'])->name('quote.show.all');
+			Route::post('/quote/{lang}', [QuoteController::class, 'store'])->name('quote.store');
 			Route::patch('/quote/{quote}/{lang}', [QuoteController::class, 'update'])->name('quote.edit');
 			Route::delete('/quote/{quote}/{lang}', [QuoteController::class, 'destroy'])->name('quote.delete');
 
