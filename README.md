@@ -22,18 +22,18 @@ This is movie quotes app. In this app you can see randomly generated quotes from
 
 ### Prerequisites
 
--   <img src="/public/images/php.svg" width="35" style="position: relative; top: 4px" /> *PHP@8.02 and up*
--   <img src="/public/images/mysql.png" width="35" style="position: relative; top: 4px" /> _MYSQL@8 and up_
--   <img src="/public/images/npm.png" width="35" style="position: relative; top: 4px" /> _npm@6 and up_
--   <img src="/public/images/composer.png" width="35" style="position: relative; top: 6px" /> _composer@2 and up_
+-   <img src="/images/php.svg" width="35" style="position: relative; top: 4px" /> *PHP@8.02 and up*
+-   <img src="/images/mysql.png" width="35" style="position: relative; top: 4px" /> _MYSQL@8 and up_
+-   <img src="/images/npm.png" width="35" style="position: relative; top: 4px" /> _npm@6 and up_
+-   <img src="/images/composer.png" width="35" style="position: relative; top: 6px" /> _composer@2 and up_
 
 #
 
 ### Tech Stack
 
--   <img src="/public/images/laravel.png" height="18" style="position: relative; top: 4px" /> [Laravel@9.x](https://laravel.com/docs/9.x) - back-end framework
--   <img src="/public/images/spatie.png" height="18" style="position: relative; top: 4px" /> [Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
--   <img src="/public/images/vite.png" height="18" style="position: relative; top: 4px; width: 18px" /> [Vite](https://vitejs.dev/guide/) - rapid development tool
+-   <img src="/images/laravel.png" height="18" style="position: relative; top: 4px" /> [Laravel@9.x](https://laravel.com/docs/9.x) - back-end framework
+-   <img src="/images/spatie.png" height="18" style="position: relative; top: 4px" /> [Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
+-   <img src="/images/vite.png" height="18" style="position: relative; top: 4px; width: 18px" /> [Vite](https://vitejs.dev/guide/) - rapid development tool
 
 #
 
@@ -160,7 +160,7 @@ For more information about project standards, take a look at these docs:
 
 ### Structure of mysql
 
-<img src="/public/images/Drawsql.png" height="250" style="position: relative; top: 4px" />
+<img src="/images/Drawsql.png" height="250" style="position: relative; top: 4px" />
 
 </br>
 

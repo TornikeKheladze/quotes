@@ -1,6 +1,7 @@
 <!doctype html>
 
 <title>Movie Quotes</title>
+<link rel="icon" type="image/png" sizes="16x16" href="/storage/movieicon.png">
 @vite('resources/css/app.css')
 
 <body class="flex flex-col items-center h-screen bg-gradient-radial from-gray-889 to-gray-888">
