@@ -20,4 +20,7 @@ return [
 	'photo'           => 'Photo',
 	'quote-edit'      => 'Edit Quote',
 	'home'            => 'Home',
+	'all-quotes'      => 'Show All Quotes',
+	'sure'            => 'Are you sure you want to delete',
+	'go-back'         => 'Go Back',
 ];

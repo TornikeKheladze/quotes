@@ -24,6 +24,20 @@ class QuoteController extends Controller
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 
+	public function listAll()
+	{
+		return view('quote.all-quotes', [
+			'movies'=> Movie::all(),
+		]);
+	}
+
+	public function delete(Quote $quote)
+	{
+		return view('quote.delete-quote', [
+			'quote'=> $quote,
+		]);
+	}
+
 	public function create()
 	{
 		return view('quote.create', [
