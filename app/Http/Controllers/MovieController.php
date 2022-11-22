@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMovie;
+use App\Http\Requests\StoreMovieRequest;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Support\Str;
@@ -30,18 +30,19 @@ class MovieController extends Controller
 		return view('movie.create');
 	}
 
-	public function store(StoreMovie $request)
+	public function store(StoreMovieRequest $request)
 	{
 		$attributes = $request->validated();
 
 		$slug = Str::replace(' ', '-', $attributes['name_en']);
 
-		$movie = new Movie();
-		$movie
-		   ->setTranslation('name', 'en', $attributes['name_en'])
-		   ->setTranslation('name', 'ka', $attributes['name_ka'])
-		   ->setAttribute('slug', $slug)
-		   ->save();
+		$translations = ['en' => $attributes['name_en'], 'ka' => $attributes['name_ka']];
+		$withTranslations = [
+			'name'=> $translations,
+			'slug'=> $slug,
+		];
+
+		Movie::create($withTranslations);
 
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
@@ -60,7 +61,7 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function update(Movie $movie, StoreMovie $request)
+	public function update(Movie $movie, StoreMovieRequest $request)
 	{
 		$attributes = $request->validated();
 

@@ -1,7 +1,4 @@
 <x-layout>
-    @auth
-        <a class="text-3xl" href="{{ route('admin', ['lang' => app()->getLocale()]) }}">Admin Controls</a>
-    @endauth
     <div class="flex flex-col items-center w-2/3 h-screen justify-center ">
 
         @if ($quoteWithMovie->count())

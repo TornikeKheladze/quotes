@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditQuote extends FormRequest
+class EditQuoteRequest extends FormRequest
 {
 	public function rules()
 	{
