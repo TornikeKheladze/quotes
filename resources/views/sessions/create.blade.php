@@ -1,6 +1,6 @@
 <x-layout>
 
-    <section class="px-6 py-8 w-1/3">
+    <section class="px-6 py-8 w-1/2">
         <main class='max-w-lg mx-auto mt-10 bg-gray-100 p-6 rounded-xl border-gray-300 '>
             <h1 class="text-center font-bold text-xl">{{ __('admin.login') }}</h1>
             <form method='POST' action='{{ route('login', ['lang' => app()->getLocale()]) }}' class='mt-10'>
