@@ -12,10 +12,10 @@
                 </span>
                 <div class="mr-4 flex items-start">
                     <a class="text-gray-600 mr-4"
-                        href="{{ route('quote_edit', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
+                        href="{{ route('quote.show.edit', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
 
                     <form method='POST' class="pt-0"
-                        action='{{ route('delete_quote', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}'
+                        action='{{ route('quote.delete', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}'
                         enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                         @csrf
                         @method('delete')
@@ -24,7 +24,7 @@
                 </div>
             </div>
         @endforeach
-        <a href="{{ route('quote_create', ['lang' => app()->getLocale()]) }}"
+        <a href="{{ route('quote.show.create', ['lang' => app()->getLocale()]) }}"
             class="bg-gray-300 pl-6 pr-6 rounded-xl self-center text-center">{{ __('admin.quote') }}</a>
     </div>
 </x-layout>

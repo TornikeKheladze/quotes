@@ -28,8 +28,7 @@
                 @csrf
                 <button type='submit'>{{ __('admin.logout') }}</button>
             </form>
-        @else
-            <h1><a href="/login/{{ app()->getLocale() }}">{{ __('admin.login') }}</a></h1>
+
         @endauth
     </div>
 
