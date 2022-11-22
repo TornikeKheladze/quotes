@@ -9,7 +9,7 @@
 
             <h1 class="text-white text-3xl mt-8 mb-16">{{ $quoteWithMovie->quote }}</h1>
             <a class="underline text-white text-4xl"
-                href="{{ route('show_movie', ['movie' => $quoteWithMovie->movie->slug, 'lang' => app()->getLocale()]) }}">{{ $quoteWithMovie->movie->name }}</a>
+                href="{{ route('show.movie', ['movie' => $quoteWithMovie->movie->slug, 'lang' => app()->getLocale()]) }}">{{ $quoteWithMovie->movie->name }}</a>
         @else
             <p class="text-4xl text-white">No quotes yet
             <p>
