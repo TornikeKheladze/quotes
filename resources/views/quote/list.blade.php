@@ -14,7 +14,8 @@
                     <a class="text-gray-600 mr-4"
                         href="{{ route('quote_edit', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}">{{ __('admin.edit') }}</a>
 
-                    <form method='POST' class="pt-0" action='{{ route('delete_quote', ['quote' => $quote->id]) }}'
+                    <form method='POST' class="pt-0"
+                        action='{{ route('delete_quote', ['quote' => $quote->id, 'lang' => app()->getLocale()]) }}'
                         enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                         @csrf
                         @method('delete')

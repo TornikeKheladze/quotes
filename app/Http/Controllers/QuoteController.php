@@ -6,14 +6,9 @@ use App\Http\Requests\EditQuote;
 use App\Http\Requests\StoreQuote;
 use App\Models\Movie;
 use App\Models\Quote;
-use Illuminate\Support\Facades\App;
 
 class QuoteController extends Controller
 {
-	public function index()
-	{
-	}
-
 	public function store(StoreQuote $request)
 	{
 		$attributes = $request->validated();
@@ -29,22 +24,15 @@ class QuoteController extends Controller
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 
-	public function create($lang)
+	public function create()
 	{
-		App::setLocale($lang);
-
 		return view('quote.create', [
 			'movies'=> Movie::all(),
 		]);
 	}
 
-	public function show(Quote $quote)
+	public function edit(Quote $quote)
 	{
-	}
-
-	public function edit(Quote $quote, $lang)
-	{
-		App::setLocale($lang);
 		return view('quote.edit', [
 			'quote' => $quote,
 			'movies'=> Movie::all(),
@@ -64,6 +52,7 @@ class QuoteController extends Controller
 		{
 			$withTranslations['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
+
 		$quote->update($withTranslations);
 
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);

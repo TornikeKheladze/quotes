@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -11,21 +12,21 @@ return [
 	| as the size rules. Feel free to tweak each of these messages here.
 	|
 	*/
-	'login_error'     => 'Wrong Email or Password',
-	'password_error'  => 'Wrong Password',
-	'invalid_image'   => 'Choosen file must be an image',
-	'accepted'        => 'The :attribute must be accepted.',
-	'accepted_if'     => 'The :attribute must be accepted when :other is :value.',
-	'active_url'      => 'The :attribute is not a valid URL.',
-	'after'           => 'The :attribute must be a date after :date.',
-	'after_or_equal'  => 'The :attribute must be a date after or equal to :date.',
-	'alpha'           => 'The :attribute must only contain letters.',
-	'alpha_dash'      => 'The :attribute must only contain letters, numbers, dashes and underscores.',
-	'alpha_num'       => 'The :attribute must only contain letters and numbers.',
-	'array'           => 'The :attribute must be an array.',
-	'before'          => 'The :attribute must be a date before :date.',
-	'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
-	'between'         => [
+	'login_error'          => 'არასწორი ელ-ფოსტა ან პაროლი',
+	'password_error'       => 'არასწორი პაროლი',
+	'invalid_image'        => 'არჩეული ფაილი უნდა იყოს ფოტო',
+	'accepted'             => 'The :attribute must be accepted.',
+	'accepted_if'          => 'The :attribute must be accepted when :other is :value.',
+	'active_url'           => 'The :attribute is not a valid URL.',
+	'after'                => 'The :attribute must be a date after :date.',
+	'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
+	'alpha'                => 'The :attribute must only contain letters.',
+	'alpha_dash'           => 'The :attribute must only contain letters, numbers, dashes and underscores.',
+	'alpha_num'            => 'The :attribute must only contain letters and numbers.',
+	'array'                => 'The :attribute must be an array.',
+	'before'               => 'The :attribute must be a date before :date.',
+	'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
+	'between'              => [
 		'array'   => 'The :attribute must have between :min and :max items.',
 		'file'    => 'The :attribute must be between :min and :max kilobytes.',
 		'numeric' => 'The :attribute must be between :min and :max.',
@@ -64,7 +65,7 @@ return [
 		'numeric' => 'The :attribute must be greater than or equal to :value.',
 		'string'  => 'The :attribute must be greater than or equal to :value characters.',
 	],
-	'image'    => 'The :attribute must be an image.',
+	'image'    => 'არჩეული ფაილი უნდა იყოს ფოტო.',
 	'in'       => 'The selected :attribute is invalid.',
 	'in_array' => 'The :attribute field does not exist in :other.',
 	'integer'  => 'The :attribute must be an integer.',
@@ -118,7 +119,7 @@ return [
 	'prohibited_unless'    => 'The :attribute field is prohibited unless :other is in :values.',
 	'prohibits'            => 'The :attribute field prohibits :other from being present.',
 	'regex'                => 'The :attribute format is invalid.',
-	'required'             => 'The :attribute field is required.',
+	'required'             => 'სავალდებულო ველი',
 	'required_array_keys'  => 'The :attribute field must contain entries for: :values.',
 	'required_if'          => 'The :attribute field is required when :other is :value.',
 	'required_if_accepted' => 'The :attribute field is required when :other is accepted.',

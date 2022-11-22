@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMovie;
 use App\Models\Movie;
 use App\Models\Quote;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 class MovieController extends Controller
 {
-	public function index($lang)
+	public function index()
 	{
-		App::setLocale($lang);
 		$quoteWithMovie = Quote::inRandomOrder()->with(['movie'])->first();
 
 		return view('movies', [
@@ -20,19 +18,15 @@ class MovieController extends Controller
 		]);
 	}
 
-	public function adminPanel($lang)
+	public function adminPanel()
 	{
-		App::setLocale($lang);
-
 		return view('admin', [
 			'movies'=> Movie::all(),
 		]);
 	}
 
-	public function create($lang)
+	public function create()
 	{
-		App::setLocale($lang);
-
 		return view('movie.create');
 	}
 
@@ -52,17 +46,15 @@ class MovieController extends Controller
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
 	}
 
-	public function show(Movie $movie, $lang)
+	public function show(Movie $movie)
 	{
-		App::setLocale($lang);
 		return view('movie', [
 			'movie'=> $movie,
 		]);
 	}
 
-	public function quoteList(Movie $movie, $lang)
+	public function quoteList(Movie $movie)
 	{
-		App::setLocale($lang);
 		return view('quote.list', [
 			'movie'=> $movie,
 		]);
@@ -79,6 +71,7 @@ class MovieController extends Controller
 			'name'=> $translations,
 			'slug'=> $slug,
 		];
+
 		$movie->update($withTranslations);
 
 		return redirect()->route('admin', ['lang'=>app()->getLocale()]);
@@ -93,7 +86,6 @@ class MovieController extends Controller
 
 	public function edit(Movie $movie, $lang)
 	{
-		App::setLocale($lang);
 		return view('movie.edit', [
 			'movie'=> $movie,
 		]);

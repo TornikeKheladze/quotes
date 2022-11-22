@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
@@ -13,9 +12,8 @@ class SessionsController extends Controller
 		return redirect()->route('home', ['lang'=>app()->getLocale()]);
 	}
 
-	public function create($lang)
+	public function create()
 	{
-		App::setLocale($lang);
 		return view('sessions.create');
 	}
 
@@ -27,7 +25,7 @@ class SessionsController extends Controller
 		]);
 		if (!auth()->attempt($attributes))
 		{
-			throw ValidationException::withMessages(['email'=>'You provided cretentials are not valid']);
+			throw ValidationException::withMessages(['email'=>__('auth.failed')]);
 		}
 
 		session()->regenerate();
