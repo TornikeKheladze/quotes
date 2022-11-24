@@ -7,13 +7,16 @@ use Illuminate\Console\Command;
 
 class CreateAdmin extends Command
 {
-	protected $signature = 'admin:create {--name=} {--email=} {--password=}';
+	protected $signature = 'admin:create {name} {email} {password}';
+
+	protected $description = 'creates new admin arguments name email password 
+								php artisan admin:create name email password';
 
 	public function handle()
 	{
-		$name = $this->option(key:'name');
-		$email = $this->option(key:'email');
-		$password = $this->option(key:'password');
+		$name = $this->argument(key:'name');
+		$email = $this->argument(key:'email');
+		$password = $this->argument(key:'password');
 
 		User::create([
 			'name'    => $name,
