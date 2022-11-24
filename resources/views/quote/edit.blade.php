@@ -1,4 +1,5 @@
 <x-layout>
+    <x-header />
     <section class="px-6 py-8 w-1/2">
         <h1 class="text-xl font-bold mb-4 text-center">{{ __('admin.quote-edit') }}</h1>
 
@@ -58,7 +59,7 @@
                     {{ __('admin.photo') }}
                 </label>
                 <input class="border border-gray-400 p-2 w-full" type="file" name="thumbnail" id="thumbnail"
-                    value="{{ old('thumbnail') }}" />
+                    value="{{ old('thumbnail', $quote->thumbnail) }}" />
                 @error('thumbnail')
                     <p class="text-red-500 text-xs mt-1">
                         {{ $message }}

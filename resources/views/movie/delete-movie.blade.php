@@ -1,5 +1,5 @@
 <x-layout>
-
+    <x-header/>
     <div class="w-screen h-screen flex flex-col items-center justify-center">
         <h1 class="text-xl">{{ __('admin.sure') }} <span class="text-2xl text-red-700">{{ $movie->name }}</span>?</h1>
         <form method='POST' class="pt-0"

@@ -1,4 +1,5 @@
 <x-layout>
+    <x-header />
 
     <h1 class="text-3xl text-white mb-4">
         Admin

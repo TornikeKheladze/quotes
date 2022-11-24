@@ -1,4 +1,5 @@
 <x-layout>
+    <x-header />
     <div class="flex justify-center gap-4 flex-col w-1/2">
         <h1 class="text-3xl text-white">
             {{ $movie->name }}
