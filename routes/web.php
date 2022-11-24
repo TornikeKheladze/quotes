@@ -5,12 +5,17 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', 'home/en', 301);
+
 Route::middleware('setLocale')->group(function () {
-	Route::get('/{lang}', [MovieController::class, 'index'])->name('home');
+	Route::redirect('/admin/login', '/login/en', 301);
+
+	Route::get('/home/{lang}', [MovieController::class, 'index'])->name('home');
 	Route::get('/movie/{movie:slug}/{lang}', [MovieController::class, 'show'])->name('show.movie');
 
 	Route::prefix('admin')->group(function () {
 		Route::middleware(['auth'])->group(function () {
+			Route::redirect('/', '/admin/en', 301);
 			Route::get('/movie/create/{lang}', [MovieController::class, 'create'])->name('movie.show.create');
 			Route::get('/movie/{movie:slug}/{lang}', [MovieController::class, 'quoteList'])->name('admin.movie');
 			Route::get('/{lang}', [MovieController::class, 'adminPanel'])->name('admin');

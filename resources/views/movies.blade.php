@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center w-2/3 h-screen justify-center ">
 
         @if ($quoteWithMovie->count())
-            <img class="rounded-xl max-w-2xl  max-h-80" src="/storage/{{ $quoteWithMovie->thumbnail }}" alt="" />
+            <img class="rounded-xl  w-10/12 h-10/12" src="/storage/{{ $quoteWithMovie->thumbnail }}" alt="" />
             <h1 class="text-white text-3xl mt-8 mb-16">{{ $quoteWithMovie->quote }}</h1>
             <a class="underline text-white text-4xl"
                 href="{{ route('show.movie', ['movie' => $quoteWithMovie->movie->slug, 'lang' => app()->getLocale()]) }}">{{ $quoteWithMovie->movie->name }}</a>
