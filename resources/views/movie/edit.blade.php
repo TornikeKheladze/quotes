@@ -1,9 +1,10 @@
 <x-layout>
+    <x-header />
     <section class="px-6 py-8 w-1/2">
         <h1 class="text-xl font-bold mb-4 text-center"> {{ __('admin.edit-movie') }} </h1>
 
-        <form method='POST' action='{{ route('movie.edit', ['movie' => $movie->id,'lang'=>app()->getLocale()]) }}' enctype="multipart/form-data"
-            class='mt-10 flex items-center flex-col'>
+        <form method='POST' action='{{ route('movie.edit', ['movie' => $movie->id, 'lang' => app()->getLocale()]) }}'
+            enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
             @csrf
             @method('patch')
 

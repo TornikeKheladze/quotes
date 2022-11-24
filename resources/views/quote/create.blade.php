@@ -1,9 +1,10 @@
 <x-layout>
+    <x-header />
     <section class="px-6 py-8 w-1/2">
         <h1 class="text-xl font-bold mb-4 text-center">{{ __('admin.quote') }}</h1>
 
-        <form method='POST' action='{{ route('quote.store', ['lang' => app()->getLocale()]) }}' enctype="multipart/form-data"
-            class='mt-10 flex items-center flex-col'>
+        <form method='POST' action='{{ route('quote.store', ['lang' => app()->getLocale()]) }}'
+            enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
             @csrf
 
             <div class="mb-6 w-full">

@@ -1,4 +1,9 @@
 <x-layout>
+    <x-header />
+    <a href="{{ route('quote.show.create', ['lang' => app()->getLocale()]) }}"
+        class="text-2xl text-white underline mb-6">{{ __('admin.quote') }}</a>
+    <a class="text-2xl text-white underline"
+        href="{{ route('admin', ['lang' => app()->getLocale()]) }}">{{ __('admin.go-back') }}</a>
     <div class="flex justify-center gap-4 flex-col w-1/2">
         @foreach ($movies as $movie)
             @foreach ($movie->quotes as $quote)
@@ -19,7 +24,8 @@
                                 enctype="multipart/form-data" class='mt-10 flex items-center flex-col'>
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="text-red-600 self-start">{{ __('admin.delete') }}</button>
+                                <button type="submit"
+                                    class="text-red-600 self-start">{{ __('admin.delete') }}</button>
                             </form>
                         </div>
                     </div>
@@ -28,4 +34,5 @@
         @endforeach
 
     </div>
+
 </x-layout>
