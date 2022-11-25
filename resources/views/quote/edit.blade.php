@@ -58,8 +58,11 @@
                 <label for="thumbnail" class="block mb-2 uppercase font-bold text-xs text-white">
                     {{ __('admin.photo') }}
                 </label>
+                <img src="/storage/{{ $quote->thumbnail }}" class=" w-1/3" />
                 <input class="border border-gray-400 p-2 w-full" type="file" name="thumbnail" id="thumbnail"
                     value="{{ old('thumbnail', $quote->thumbnail) }}" />
+
+
                 @error('thumbnail')
                     <p class="text-red-500 text-xs mt-1">
                         {{ $message }}
